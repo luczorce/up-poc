@@ -18,6 +18,26 @@ geth --datadir ./datadir1 --networkid 1114 console 2>> eth1.log
 
 Whatever the `networkid` is here is what other peers who want to connect will need to know, as well.
 
+After you have started this network, make note of the output of the following command:
+
+```
+admin.nodeInfo.enode
+```
+
+This will allow us to connect peers to this network.
+
+You can now start the mining operation, if you have created an account with `miner.start()`
+
+## Adding Peers to the Network
+
+In a new terminal, instantiate a new datadir for a new peer, and start the network with a new port. You can run the bash scripts as defined below to quickly do so.
+
+Once the network is up, you add the peer, defing the address of the inital network (what came from `admin.node.enode`)
+
+```
+admin.addPeer('REPLACE WHAT CAME FROM admin.node.enode')
+```
+
 ## Helpful Hints
 
 ### Clean up, whoops
@@ -37,4 +57,13 @@ In a new terminal, adds networks to the network with 1114 at subsequent ports.
 ``` bash
 cd path/to/private/ethereum
 bash start.sh 1
+```
+
+### Instantiate Peer Nodes Quickly
+
+To be run once before you start the network
+
+``` bash
+cd path/to/private/ethereum
+bash init.sh 1
 ```
