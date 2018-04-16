@@ -1,0 +1,5 @@
+datadir*
+eth*.log
+
+# storing sample account data here
+.accounts.txt
