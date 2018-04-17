@@ -5,4 +5,5 @@
 #   pass in a number to represent the index of the network
 
 PORT=$(( 30300+${@} ))
-geth --datadir ./datadir${@} --networkid 1114 --port $PORT console 2>> eth${@}.log
+RPCPORT=$(( 8050+${@} ))
+geth --datadir ./datadir${@} --networkid 1114 --port $PORT --rpc --rpcport $RPCPORT console 2>> eth${@}.log
