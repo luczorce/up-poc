@@ -6,4 +6,4 @@
 
 PORT=$(( 30300+${@} ))
 RPCPORT=$(( 8050+${@} ))
-geth --datadir ./datadir${@} --networkid 1114 --port $PORT --rpc --rpcport $RPCPORT console 2>> eth${@}.log
+geth --datadir ./chain/datadir${@} --networkid 1114 --port $PORT --rpc --rpcport $RPCPORT console 2>> chain/eth${@}.log

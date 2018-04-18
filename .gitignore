@@ -1,5 +1,7 @@
-datadir*
-eth*.log
+# stores everything for the chain here
+chain
+# chain/datadir*
+# chain/eth*.log
 
 # storing sample account data here
 .accounts.txt
