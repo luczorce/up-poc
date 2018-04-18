@@ -4,27 +4,44 @@ Here we are following a [tutorial](https://medium.com/mercuryprotocol/how-to-cre
 
 ## Getting Started
 
-1. Alter the `config.chainId` and `difficulty` values in myGenesis.json
-2. Instantiate your data directory with:
+1. Create Accounts and store that info
+  ``` bash
+  geth --datadir ./chain/datadir1 account new
+  geth --datadir ./chain/datadir2 account new
   ```
-    geth --datadir ./datadir1 init ./myGenesis.json
+2. Alter the `config.chainId` and `difficulty` values in myGenesis.json. Allocate eth to the accounts you just created.
+3. Instantiate your blockchain with:
+  ``` bash
+  geth --datadir ./chain/datadir1 init ./myGenesis.json
   ```
 
 ## Starting the Network
 
 ``` bash
-geth --datadir ./datadir1 --networkid 1114 console 2>> eth1.log
+geth --datadir ./chain/datadir1 --networkid 1114 console 2>> chain/eth1.log
 ```
 
 Whatever the `networkid` is here is what other peers who want to connect will need to know, as well.
 
 After you have started this network, make note of the output of the following command:
 
-```
+``` js
 admin.nodeInfo.enode
 ```
 
 This will allow us to connect peers to this network.
+
+## Unlock the Account
+
+In order to run transactions against this account, you'll need to [unlock](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts#listing-accounts-and-checking-balances) it. While in the terminal, you can run:
+
+``` js
+personal.unlockAccount(address, "password", 300)
+```
+
+The 300 in this example is how long (in seconds) the account will be unlocked for.
+
+## Profit??
 
 You can now start the mining operation, if you have created an account with `miner.start()`
 
@@ -39,6 +56,12 @@ admin.addPeer('REPLACE WHAT CAME FROM admin.node.enode')
 ```
 
 ## Helpful Hints
+
+### Ports and Numbers to remember
+
+* NetworkID: 1114
+* RPC Port: 8050 + whichever network index (normally **8051** for the first)
+* Network Port: 30300 + whichever network index (normally **30301** for the first)
 
 ### Clean up, whoops
 
