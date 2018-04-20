@@ -14,6 +14,7 @@ Here we are following a [tutorial](https://medium.com/mercuryprotocol/how-to-cre
   ``` bash
   geth --datadir ./chain/datadir1 init ./myGenesis.json
   ```
+4. `TODO` Consider starting a bootnode `bootnode -genkey boot.key`
 
 ## Starting the Network
 
